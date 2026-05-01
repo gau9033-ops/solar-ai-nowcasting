@@ -24,11 +24,12 @@ st.set_page_config(page_title="Solar Forecast", layout="wide", page_icon="☀️
 refresh_count = st_autorefresh(interval=300000, limit=1000, key="live_dashboard")
 
 # ─────────────────────────────────────────────
-# 3. MODEL LOAD (unchanged)
+# 3. MODEL LOAD (Updated for GitHub/Streamlit Cloud)
 # ─────────────────────────────────────────────
 @st.cache_resource
 def load_master_brain():
-    model_path = r"A:\AI forcasting project\Data for training\final AI training\GLOBAL_MASTER_BRAIN.pkl"
+    # Looks for the compressed model in the same folder on the cloud server
+    model_path = "GLOBAL_MASTER_BRAIN_COMPRESSED.pkl"
     return joblib.load(model_path)
 
 try:
