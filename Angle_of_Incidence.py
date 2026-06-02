@@ -136,7 +136,7 @@ with st.spinner("Connecting to meteorological data..."):
             final_power_list.append(0.0)
         else:
             angle_eff  = max(0.0, np.cos(np.radians(row['aoi'])))
-            cloud_eff  = (100 - row['cloud_cover']) / 100
+            cloud_eff = max(0.08, (100 - row['cloud_cover']) / 100)
             pred_shift = ai_predictions[idx]
             watts      = (plant_size * 1000) * cloud_eff * angle_eff * (1 + pred_shift)
             final_power_list.append(max(0.0, watts))
